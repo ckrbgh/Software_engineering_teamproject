@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Send Message{% endblock %}
+{% block content %}
+<h2>Send Message to {{ photo.owner.username }}</h2>
+<form method="POST" action="{{ url_for('message', photo_id=photo.id) }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.content.label }} {{ form.content(rows=5) }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Messages{% endblock %}
+{% block content %}
+<h2>Messages</h2>
+<ul>
+    {% for message in messages %}
+        <li>
+            <p>From: {{ message.sender.username }}</p>
+            <p>{{ message.content }}</p>
+            <p>Sent at: {{ message.timestamp }}</p>
+            <form method="POST" action="{{ url_for('delete_message', message_id=message.id) }}">
+                <input type="submit" value="Delete">
+            </form>
+            <a href="{{ url_for('reply', message_id=message.id) }}">Reply</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

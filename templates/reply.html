@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Reply Message{% endblock %}
+{% block content %}
+<h2>Reply to {{ original_message.sender.username }}</h2>
+<form method="POST" action="{{ url_for('reply', message_id=original_message.id) }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.content.label }} {{ form.content(rows=5) }}
+    </div>
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}
+
